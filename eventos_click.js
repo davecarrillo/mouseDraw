@@ -16,36 +16,30 @@ dibujarLinea("black", 0, 0, 300, 0, papel);
 dibujarLinea("black", 300, 0, 300, 300, papel);
 dibujarLinea("black", 0, 300, 300, 300, papel);
 
-function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo)
-{ 
-   lienzo.beginPath();
-   lienzo.strokeStyle = color;
-   lienzo.lineWidth = 3;
-   lienzo.moveTo(xinicial, yinicial);
-   lienzo.lineTo(xfinal, yfinal);
-   lienzo.stroke();
-   lienzo.closePath(); 
+function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo) {
+  lienzo.beginPath();
+  lienzo.strokeStyle = color;
+  lienzo.lineWidth = 3;
+  lienzo.moveTo(xinicial, yinicial);
+  lienzo.lineTo(xfinal, yfinal);
+  lienzo.stroke();
+  lienzo.closePath();
 }
 
-function presionarMouse(evento)
-{
-    estado = 1;
+function presionarMouse(evento) {
+  estado = 1;
+  x = evento.layerX;
+  y = evento.layerY;
+}
+
+function soltarMouse(evento) {
+  estado = 0;
+}
+
+function dibujarMouse(evento) {
+  if (estado == 1) {
+    dibujarLinea(color, x, y, evento.layerX, evento.layerY, papel);
     x = evento.layerX;
     y = evento.layerY;
-    dibujarLinea(color, x, y, evento.layerX, evento.layerY, papel);
-}
-
-function soltarMouse(evento)
-{
-    estado = 0;
-    x = evento.layerX;
-    y = evento.layerY;
-    dibujarLinea(color, x, y, evento.layerX, evento.layerY, papel);
-}
-
-function dibujarMouse(evento)
-{
-
-    if(estado == 1);
-    dibujarLinea(color, x, y, evento.layerX, evento.layerY, papel);
+  }
 }
